@@ -1,9 +1,12 @@
 import java.io.File;
 import java.io.IOException;
 import java.awt.Color;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class ConvertToGray {
 
@@ -34,24 +37,27 @@ public class ConvertToGray {
 			}
 		
 		try {
-			//File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\TirthPic_Greyed.jpg");
-			//ImageIO.write(image, "jpg", output_file );
+			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\TirthPic_Greyed.jpg");
+			ImageIO.write(image, "jpg", output_file );
+			
 			ImageIcon icon = new ImageIcon(image);
 			JFrame frame = new JFrame();
 			frame.setLayout(new FlowLayout());
-			frame.setSize(200,300);
+			frame.setSize(400,500);
 			JLabel lbl = new JLabel();
-			lbl =.setIcon(icon);
+			lbl.setIcon(icon);
 			frame.add(lbl);
 			frame.setVisible(true);
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+			
 			System.out.println("Writing Complete.");
+			
 		}
 		catch(IOException e) {
 			System.out.println("Error: " + e);
 			return;
 		}
+		
 	}
 
 }
