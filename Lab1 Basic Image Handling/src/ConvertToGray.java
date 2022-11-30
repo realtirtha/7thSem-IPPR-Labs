@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 public class ConvertToGray {
 
@@ -33,8 +34,18 @@ public class ConvertToGray {
 			}
 		
 		try {
-			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\TirthPic_Greyed.jpg");
-			ImageIO.write(image, "jpg", output_file );
+			//File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\TirthPic_Greyed.jpg");
+			//ImageIO.write(image, "jpg", output_file );
+			ImageIcon icon = new ImageIcon(image);
+			JFrame frame = new JFrame();
+			frame.setLayout(new FlowLayout());
+			frame.setSize(200,300);
+			JLabel lbl = new JLabel();
+			lbl =.setIcon(icon);
+			frame.add(lbl);
+			frame.setVisible(true);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					
 			System.out.println("Writing Complete.");
 		}
 		catch(IOException e) {
