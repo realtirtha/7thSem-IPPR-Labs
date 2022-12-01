@@ -11,13 +11,14 @@ import javax.swing.JLabel;
 public class ConvertToGray {
 
 
+	private static final int[][] A = new int[10000][1000];
+
 	public static void main(String[] args) {
 		//System.out.println("Hello, World!");
 		
 		
 		//declaration part
 		//BufferedImage image = null;
-		int A[][]= new int[10000][1000];
 		BufferedImage image = new BufferedImage(A.length,A[0].length,BufferedImage.TYPE_BYTE_GRAY);
 		
 		
@@ -31,8 +32,14 @@ public class ConvertToGray {
 		}
 		
 		
-		//code to convert image to array
+		//call to convert image to array
 		convertToArray(image);
+		
+		//question 1 applying thresholding
+		ques1(image);
+		
+		//call to convert into array gray
+		arrConvertToGray(image);
 		
 		
 		
@@ -57,15 +64,29 @@ public class ConvertToGray {
 		
 	}
 	
+	//ques1 solving
+	static void ques1(BufferedImage image) {
+		for(int x=0;x<image.getWidth();x++)
+			for(int y=0; y<image.getHeight();y++) {
+				if(A[x][y]<128)
+					A[x][y]=255;
+				else
+					A[x][y]=0;			}
+	}
+	
 	
 	//function to convert image to array
 	static void convertToArray(BufferedImage image) {
-		ConvertToGray cog = new ConvertToGray();
 		for(int x=0;x<image.getWidth();x++)
 			for(int y=0; y<image.getHeight();y++) {
-				Color newColor = new Color(cog.A[x][y],cog.A[x][y],cog.A[x][y]);
+				Color newColor = new Color(A[x][y],A[x][y],A[x][y]);
 				image.setRGB(x, y, newColor.getRGB());
 			}
+	}
+	
+	//function to change array image to gray array image
+	static void arrConvertToGray(BufferedImage image) {
+		
 	}
 	
 	
