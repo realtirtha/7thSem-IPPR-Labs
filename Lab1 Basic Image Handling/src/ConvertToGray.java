@@ -1,8 +1,9 @@
 import java.io.File;
 import java.io.IOException;
 import java.awt.Color;
-import java.awt.*;
+import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,58 +12,45 @@ import javax.swing.JLabel;
 public class ConvertToGray {
 
 
-	private static final int[][] A = new int[10000][1000];
+	private static final int[][] A = new int[400][500];
 
 	public static void main(String[] args) {
 		//System.out.println("Hello, World!");
 		
 		
 		//declaration part
-		//BufferedImage image = null;
-		BufferedImage image = new BufferedImage(A.length,A[0].length,BufferedImage.TYPE_BYTE_GRAY);
+		BufferedImage image = null;
+		//BufferedImage image = new BufferedImage(A.length,A[0].length,BufferedImage.TYPE_BYTE_GRAY);
 		
 		
-		//reading image code
+		//reading image
 		try {
-			image = ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\TirthPic.jpg"));
+			image = ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\hill.jpg"));
 			System.out.println("Reading Complete.");
 		}
 		catch(IOException e) {
 			System.out.println("Error: " + e);
 		}
+			
+		//call to convert image into array
+		//convertToArray(image);
 		
-		
-		//call to convert image to array
-		convertToArray(image);
-		
-		//question 1 applying thresholding
-		ques1(image);
+		//question1: call to change intensity using thresholding
+		//ques1(image);
 		
 		//call to convert into array gray
-		arrConvertToGray(image);
+		//arrConvertToGray(image);
 		
 		
+		buffer(image);
 		
 		
-		//buffer(image);
-		
-		
-		//writing image
-		try {
-			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\TirthPic_Greyed.jpg");
-			ImageIO.write(image, "jpg", output_file );
-			
-			display(image);
-			
-			System.out.println("Writing Complete.");
-			
-		}
-		catch(IOException e) {
-			System.out.println("Error: " + e);
-			return;
-		}
+		//call to write image image
+		writeImage(image);
 		
 	}
+	
+	
 	
 	//ques1 solving
 	static void ques1(BufferedImage image) {
@@ -119,6 +107,25 @@ public class ConvertToGray {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 	}
+	
+	//function to write image output
+	static void writeImage(BufferedImage image) {
+		try {
+			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\greyed-hill.jpg");
+			ImageIO.write(image, "jpg", output_file );
+			
+			
+			
+			System.out.println("Writing Complete.");
+			
+		}
+		catch(IOException e) {
+			System.out.println("Error: " + e);
+			return;
+		}
+		display(image);
+	}
+	
 	
 	
 
