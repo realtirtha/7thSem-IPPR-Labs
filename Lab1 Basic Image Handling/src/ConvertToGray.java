@@ -10,19 +10,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class ConvertToGray {
-
-
-	private static final int[][] A = new int[400][500];
+	//static int[][] A = new int[10][20];
 
 	public static void main(String[] args) {
 		//System.out.println("Hello, World!");
 		
 		
 		//declaration part
-		BufferedImage image = null;
 		//BufferedImage image = new BufferedImage(A.length,A[0].length,BufferedImage.TYPE_BYTE_GRAY);
 		
 		
+		BufferedImage image = null;
+		 
 		//reading image
 		try {
 			image = ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\hill.jpg"));
@@ -31,22 +30,38 @@ public class ConvertToGray {
 		catch(IOException e) {
 			System.out.println("Error: " + e);
 		}
+		
+		//converting image to grey but using RBG value
+		buffer(image);		
+		
+		//writing image
+		try {
+			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\buffer-greyed-hill.jpg");
+			ImageIO.write(image, "jpg", output_file );
 			
+			
+			
+			System.out.println("Writing Complete.");
+			
+		}
+		catch(IOException e) {
+			System.out.println("Error: " + e);
+			return;
+		}
+		display(image);
+		
+		
+		//call to convert into array gray
+		//arrConvertToGray(image);
+		
 		//call to convert image into array
 		//convertToArray(image);
 		
 		//question1: call to change intensity using thresholding
 		//ques1(image);
 		
-		//call to convert into array gray
-		//arrConvertToGray(image);
-		
-		
-		buffer(image);
-		
-		
 		//call to write image image
-		writeImage(image);
+		//writeImage(image);
 		
 	}
 	
