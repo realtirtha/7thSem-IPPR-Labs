@@ -10,16 +10,25 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class ConvertToGray {
-	//static int[][] A = new int[10][20];
+	static int[][] A= new int[1000][1000];
 
 	public static void main(String[] args) {
 		//System.out.println("Hello, World!");
 		
 		
-		//declaration part
-		//BufferedImage image = new BufferedImage(A.length,A[0].length,BufferedImage.TYPE_BYTE_GRAY);
+		BufferedImage image = new BufferedImage(A.length,A[0].length,BufferedImage.TYPE_BYTE_GRAY);
 		
 		
+		//reading image
+		try {
+			image = ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\hill.jpg"));
+			System.out.println("Reading Complete.");
+		}
+		catch(IOException e) {
+			System.out.println("Error: " + e);
+		}
+		
+		/*
 		BufferedImage image = null;
 		 
 		//reading image
@@ -49,19 +58,22 @@ public class ConvertToGray {
 			return;
 		}
 		display(image);
-		
-		
-		//call to convert into array gray
-		//arrConvertToGray(image);
+		*/
 		
 		//call to convert image into array
-		//convertToArray(image);
+		convertToArray(image);
+		
+		//call to convert into array gray
+		//arrConvertToBI(image);
+		
 		
 		//question1: call to change intensity using thresholding
 		//ques1(image);
 		
 		//call to write image image
 		//writeImage(image);
+		
+		display(image);
 		
 	}
 	
@@ -88,8 +100,19 @@ public class ConvertToGray {
 	}
 	
 	//function to change array image to gray array image
-	static void arrConvertToGray(BufferedImage image) {
-		
+	static void arrConvertToBI(BufferedImage image) {
+		for(int y=0;y<image.getHeight();y++)
+			for(int x=0;x<image.getWidth();x++)
+			{
+				Color c = new Color(image.getRGB(x, y));
+				int red = (c.getRed());
+				int green = (c.getGreen());
+				int blue = c.getBlue();
+				
+				int gray = (int)(red+green+blue)/3;
+				Color newColor = new Color(gray,gray,gray);
+				image.setRGB(x,y,newColor.getRGB());
+			}
 	}
 	
 	
