@@ -30,24 +30,20 @@ public class ConvertToGray {
 		}
 		
 		//example solution
-		ex.buffer(image);
+		//ex.buffer(image);
 		
 		//call to convert image into array
-		//int[][] InArray= convertToArray(image);
+		int[][] InArray= convertToArray(image);
 		
 		//modifying according to question 1
-		//int[][] q1= ques1(InArray);
+		int[][] q1= ques1(InArray);
 		
 		//call to convert into array gray
-		//BufferedImage InBuffered= arrConvertToBI(q1);
-		
-		
-		
-		
+		BufferedImage InBuffered= arrConvertToBI(q1);
+			
 		//call to write image image
-		//writeImage(InBuffered);
-		
-		//display(InBuffered);
+		writeImage(InBuffered);
+	
 		
 	}
 	
@@ -128,7 +124,7 @@ public class ConvertToGray {
 	//function to write image output
 	static void writeImage(BufferedImage image) {
 		try {
-			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\shree.jpg");
+			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\shree-via-array.jpg");
 			ImageIO.write(image, "jpg", output_file );
 			
 			
