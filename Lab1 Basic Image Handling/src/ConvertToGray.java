@@ -10,13 +10,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class ConvertToGray {
-	static int[][] A= new int[1000][1000];
+	
 
 	public static void main(String[] args) {
 		//System.out.println("Hello, World!");
 		
 		
-		BufferedImage image = new BufferedImage(A.length,A[0].length,BufferedImage.TYPE_BYTE_GRAY);
+		BufferedImage image = null;
 		
 		
 		//reading image
@@ -29,6 +29,8 @@ public class ConvertToGray {
 		}
 		
 		/*
+		//example number first
+		 
 		BufferedImage image = null;
 		 
 		//reading image
@@ -61,7 +63,7 @@ public class ConvertToGray {
 		*/
 		
 		//call to convert image into array
-		convertToArray(image);
+		int[][] InArray= convertToArray(image);
 		
 		//call to convert into array gray
 		//arrConvertToBI(image);
@@ -91,12 +93,18 @@ public class ConvertToGray {
 	
 	
 	//function to convert image to array
-	static void convertToArray(BufferedImage image) {
-		for(int x=0;x<image.getWidth();x++)
-			for(int y=0; y<image.getHeight();y++) {
-				Color newColor = new Color(A[x][y],A[x][y],A[x][y]);
-				image.setRGB(x, y, newColor.getRGB());
+	static int[][] convertToArray(BufferedImage image) {
+		int[][] A = new int[image.getWidth()][image.getHeight()];
+		for(int x=0;x<image.getHeight();x++)
+			for(int y=0; y<image.getWidth();y++) {
+				Color c= new Color(image.getRGB(x,y));
+				int red = c.getRed();
+				int green = c.getGreen();
+				int blue = c.getBlue();
+				
+				A[x][y]= (red+green+blue)/3;
 			}
+		return A;
 	}
 	
 	//function to change array image to gray array image
