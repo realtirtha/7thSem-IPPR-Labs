@@ -65,38 +65,42 @@ public class ConvertToGray {
 		//call to convert image into array
 		int[][] InArray= convertToArray(image);
 		
+		//modifying according to question 1
+		int[][] q1= ques1(InArray);
+		
 		//call to convert into array gray
-		//arrConvertToBI(image);
+		BufferedImage InBuffered= arrConvertToBI(q1);
 		
 		
-		//question1: call to change intensity using thresholding
-		//ques1(image);
+		
 		
 		//call to write image image
-		//writeImage(image);
+		writeImage(InBuffered);
 		
-		display(image);
+		display(InBuffered);
 		
 	}
 	
 	
 	
 	//ques1 solving
-	static void ques1(BufferedImage image) {
-		for(int x=0;x<image.getWidth();x++)
-			for(int y=0; y<image.getHeight();y++) {
-				if(A[x][y]<128)
-					A[x][y]=255;
+	static int[][] ques1(int[][] g) {
+		for(int x=0;x<g.length;x++)
+			for(int y=0; y<g[0].length;y++) {
+				if(g[x][y]<128)
+					g[x][y]=255;
 				else
-					A[x][y]=0;			}
+					g[x][y]=0;
+				}
+		return g;
 	}
 	
 	
 	//function to convert image to array
 	static int[][] convertToArray(BufferedImage image) {
 		int[][] A = new int[image.getWidth()][image.getHeight()];
-		for(int x=0;x<image.getHeight();x++)
-			for(int y=0; y<image.getWidth();y++) {
+		for(int x=0;x<image.getWidth();x++)
+			for(int y=0; y<image.getHeight();y++) {
 				Color c= new Color(image.getRGB(x,y));
 				int red = c.getRed();
 				int green = c.getGreen();
@@ -108,24 +112,21 @@ public class ConvertToGray {
 	}
 	
 	//function to change array image to gray array image
-	static void arrConvertToBI(BufferedImage image) {
-		for(int y=0;y<image.getHeight();y++)
-			for(int x=0;x<image.getWidth();x++)
+	static BufferedImage arrConvertToBI(int[][] q1) {
+		BufferedImage img =new BufferedImage(q1.length,q1[0].length,BufferedImage.TYPE_BYTE_GRAY);
+		for(int x=0;x<q1.length;x++)
+			for(int y=0;y<q1[0].length;y++)
 			{
-				Color c = new Color(image.getRGB(x, y));
-				int red = (c.getRed());
-				int green = (c.getGreen());
-				int blue = c.getBlue();
+				Color c = new Color(q1[x][y],q1[x][y],q1[x][y]);
 				
-				int gray = (int)(red+green+blue)/3;
-				Color newColor = new Color(gray,gray,gray);
-				image.setRGB(x,y,newColor.getRGB());
+				img.setRGB(x,y,c.getRGB());
 			}
+		return img;
 	}
 	
 	
 	 
-	//function go process image
+	//function go process image according to example 1 but is commented on main
 	static void buffer(BufferedImage image) {
 		for(int y=0;y<image.getHeight();y++)
 			for(int x=0;x<image.getWidth();x++)
@@ -157,7 +158,7 @@ public class ConvertToGray {
 	//function to write image output
 	static void writeImage(BufferedImage image) {
 		try {
-			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\greyed-hill.jpg");
+			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\shree.jpg");
 			ImageIO.write(image, "jpg", output_file );
 			
 			
