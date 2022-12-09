@@ -36,10 +36,14 @@ public class ConvertToGray {
 		int[][] InArray= convertToArray(image);
 		
 		//modifying according to question 1
-		int[][] q1= ques1(InArray);
+		//int[][] q1= ques1(InArray);
+		
+		//modifying according to question 2
+		int[][] q2= ques2(InArray,mean(InArray));
 		
 		//call to convert into array gray
-		BufferedImage InBuffered= arrConvertToBI(q1);
+		//BufferedImage InBuffered= arrConvertToBI(q1);
+		BufferedImage InBuffered= arrConvertToBI(q2);
 			
 		//call to write image image
 		writeImage(InBuffered);
@@ -48,6 +52,10 @@ public class ConvertToGray {
 	}
 	
 	
+	
+	
+	//---------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------
 	
 	//ques1 solving
 	static int[][] ques1(int[][] g) {
@@ -59,6 +67,36 @@ public class ConvertToGray {
 					g[x][y]=0;
 				}
 		return g;
+	}
+	
+	//finding mean
+	static int mean(int[][] f){
+		int sum=0;
+		int count=0;
+		for(int x=0;x<f.length;x++)
+		{
+			for(int y=0;y<f[0].length;y++)
+			{
+				
+				sum+=f[x][y];
+				count++;
+			
+			}
+		}
+		int mean=sum/count;
+		return mean;
+	}
+	
+	//ques2 solving
+	static int[][] ques2(int[][] h, int m){
+		for(int x=0;x<h.length;x++)
+			for(int y=0;y<h[0].length;y++) {
+				if(h[x][y]>m)
+					h[x][y]=255;
+				else
+					h[x][y]=0;
+			}
+		return h;
 	}
 	
 	
@@ -124,7 +162,7 @@ public class ConvertToGray {
 	//function to write image output
 	static void writeImage(BufferedImage image) {
 		try {
-			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\shree-via-array.jpg");
+			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\ques2.jpg");
 			ImageIO.write(image, "jpg", output_file );
 			
 			
