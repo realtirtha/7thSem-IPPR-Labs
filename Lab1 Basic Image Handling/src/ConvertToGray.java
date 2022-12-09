@@ -14,6 +14,7 @@ public class ConvertToGray {
 
 	public static void main(String[] args) {
 		//System.out.println("Hello, World!");
+		ex1 ex = new ex1();
 		
 		
 		BufferedImage image = null;
@@ -28,56 +29,25 @@ public class ConvertToGray {
 			System.out.println("Error: " + e);
 		}
 		
-		/*
-		//example number first
-		 
-		BufferedImage image = null;
-		 
-		//reading image
-		try {
-			image = ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\hill.jpg"));
-			System.out.println("Reading Complete.");
-		}
-		catch(IOException e) {
-			System.out.println("Error: " + e);
-		}
-		
-		//converting image to grey but using RBG value
-		buffer(image);		
-		
-		//writing image
-		try {
-			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\buffer-greyed-hill.jpg");
-			ImageIO.write(image, "jpg", output_file );
-			
-			
-			
-			System.out.println("Writing Complete.");
-			
-		}
-		catch(IOException e) {
-			System.out.println("Error: " + e);
-			return;
-		}
-		display(image);
-		*/
+		//example solution
+		ex.buffer(image);
 		
 		//call to convert image into array
-		int[][] InArray= convertToArray(image);
+		//int[][] InArray= convertToArray(image);
 		
 		//modifying according to question 1
-		int[][] q1= ques1(InArray);
+		//int[][] q1= ques1(InArray);
 		
 		//call to convert into array gray
-		BufferedImage InBuffered= arrConvertToBI(q1);
+		//BufferedImage InBuffered= arrConvertToBI(q1);
 		
 		
 		
 		
 		//call to write image image
-		writeImage(InBuffered);
+		//writeImage(InBuffered);
 		
-		display(InBuffered);
+		//display(InBuffered);
 		
 	}
 	
