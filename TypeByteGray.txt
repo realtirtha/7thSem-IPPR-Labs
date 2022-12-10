@@ -1,0 +1,10 @@
+BufferedImage.TYPE_BYTE_GRAY
+
+BufferedImage class is a subclass of Image class. It is used to handle and manipulate the image data.A BufferedImage is made of ColorModel of image data. All BufferedImage objects have an upper left corner coordinate of (0, 0).
+
+One of the constructor constructs a BufferedImage of one of the predefined image types.
+Syntax: BufferedImage(int width, int height, int imageType)
+
+TYPE_BYTE_GRAY is one of the imageType that represents a unsigned byte grayscale image, non-indexed. This image has a ComponentColorModel with a CS_GRAY ColorSpace. When data with non-opaque alpha is stored in an image of this type, the color data must be adjusted to a non-premultiplied form and the alpha discarded, as described in the AlphaComposite documentation.
+
+
