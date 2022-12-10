@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
@@ -14,7 +15,7 @@ public class ConvertToGray {
 
 	public static void main(String[] args) {
 		//System.out.println("Hello, World!");
-		ex1 ex = new ex1();
+		//ex1 ex = new ex1();
 		
 		
 		BufferedImage image = null;
@@ -39,11 +40,15 @@ public class ConvertToGray {
 		//int[][] q1= ques1(InArray);
 		
 		//modifying according to question 2
-		int[][] q2= ques2(InArray,mean(InArray));
+		//int[][] q2= ques2(InArray,mean(InArray));
+		
+		//modifying according to question 3, but calling ques2 caz' it does same work
+		int[][] q3= ques2(InArray,median(InArray));
 		
 		//call to convert into array gray
 		//BufferedImage InBuffered= arrConvertToBI(q1);
-		BufferedImage InBuffered= arrConvertToBI(q2);
+		//BufferedImage InBuffered= arrConvertToBI(q2);
+		BufferedImage InBuffered= arrConvertToBI(q3);
 			
 		//call to write image image
 		writeImage(InBuffered);
@@ -97,6 +102,25 @@ public class ConvertToGray {
 					h[x][y]=0;
 			}
 		return h;
+	}
+	
+	//finding median
+	static int median(int[][] me) {
+		int count= me.length*me[0].length;
+		int[] ar= new int[count];
+		int i=0;
+		for(int x=0;x<me.length;x++)
+			for(int y=0;y<me[0].length;y++) {
+				if(i<count) {
+					ar[i]=me[x][y];
+				}
+			}
+		Arrays.sort(ar);
+		int pos= (count+1)/2;
+		int median = ar[pos-1];
+		
+		return median;
+		
 	}
 	
 	
@@ -162,7 +186,7 @@ public class ConvertToGray {
 	//function to write image output
 	static void writeImage(BufferedImage image) {
 		try {
-			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\ques2.jpg");
+			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\ques3.jpg");
 			ImageIO.write(image, "jpg", output_file );
 			
 			

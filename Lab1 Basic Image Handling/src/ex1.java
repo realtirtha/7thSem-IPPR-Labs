@@ -9,7 +9,7 @@ public class ex1 {
 	
 	ConvertToGray cg = new ConvertToGray();
 	
-	public void buffer(BufferedImage image) {
+	public static void buffer(BufferedImage image) {
 		for(int y=0;y<image.getHeight();y++)
 			for(int x=0;x<image.getWidth();x++)
 			{
@@ -37,6 +37,6 @@ public class ex1 {
 			System.out.println("Error: " + e);
 			return;
 		}
-		cg.display(image);
+		ConvertToGray.display(image);
 	}
 }
