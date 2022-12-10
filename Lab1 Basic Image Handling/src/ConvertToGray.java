@@ -23,7 +23,7 @@ public class ConvertToGray {
 		
 		//reading image
 		try {
-			image = ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\hill.jpg"));
+			image = ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\images\\hill.jpg"));
 			System.out.println("Reading Complete.");
 		}
 		catch(IOException e) {
@@ -186,7 +186,7 @@ public class ConvertToGray {
 	//function to write image output
 	static void writeImage(BufferedImage image) {
 		try {
-			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\ques3.jpg");
+			File output_file = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\7th Sem IPPR Labs\\images\\ques3.jpg");
 			ImageIO.write(image, "jpg", output_file );
 			
 			
