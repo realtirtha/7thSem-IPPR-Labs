@@ -1,10 +1,6 @@
 BufferedImage.TYPE_BYTE_GRAY
 
-BufferedImage class is a subclass of Image class. It is used to handle and manipulate the image data.A BufferedImage is made of ColorModel of image data. All BufferedImage objects have an upper left corner coordinate of (0, 0).
+A BufferedImage with TYPE_BYTE_GRAY is a grayscale image that uses one byte per pixel to represent the intensity of each pixel. This type of image is useful for representing black and white images or for performing operations on the individual pixels of an image, such as image manipulation or image processing. The range of intensity values in a BufferedImage with TYPE_BYTE_GRAY is 0 to 255, with 0 representing black and 255 representing white.
 
-One of the constructor constructs a BufferedImage of one of the predefined image types.
-Syntax: BufferedImage(int width, int height, int imageType)
-
-TYPE_BYTE_GRAY is one of the imageType that represents a unsigned byte grayscale image, non-indexed. This image has a ComponentColorModel with a CS_GRAY ColorSpace. When data with non-opaque alpha is stored in an image of this type, the color data must be adjusted to a non-premultiplied form and the alpha discarded, as described in the AlphaComposite documentation.
-
+This type of image is often used in applications that require the manipulation of individual pixel values, such as image editing or image analysis. One advantage of using a BufferedImage with TYPE_BYTE_GRAY is that it allows for more efficient manipulation of the pixel data, as each pixel is represented by a single byte of data. This can make operations on the image, such as filtering or blurring, faster and more efficient. Additionally, using a grayscale image can also reduce the amount of memory required to store the image, as each pixel requires only a single byte of data rather than multiple bytes for a color image.
 
