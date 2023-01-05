@@ -35,6 +35,8 @@ public class ConvertToGray {
 				
 				//call to convert image into array
 				int[][] InArray= convertToArray(image);
+				BufferedImage original = arrConvertToBI(InArray);
+				display(original);
 				
 				//modifying according to question 1
 				//int[][] q1= ques1(InArray);
@@ -111,6 +113,7 @@ public class ConvertToGray {
 			for(int y=0;y<me[0].length;y++) {
 				if(i<count) {
 					ar[i]=me[x][y];
+					i++;
 				}
 			}
 		Arrays.sort(ar);
