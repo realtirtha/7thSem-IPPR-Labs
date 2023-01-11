@@ -1,9 +1,13 @@
 import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.io.File;
+import java.awt.FlowLayout;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class Enhance {
 
@@ -156,6 +160,19 @@ public class Enhance {
 		return arr;
 	}
 	
+	//function to display on console
+		static void display(BufferedImage image) {
+			ImageIcon icon = new ImageIcon(image); 
+			JFrame frame = new JFrame();
+			frame.setLayout(new FlowLayout());
+			frame.setSize(400,500);
+			JLabel lbl = new JLabel();
+			lbl.setIcon(icon);
+			frame.add(lbl);
+			frame.setVisible(true);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+		}
+	
 	public static void write(BufferedImage image) {
 		File output= new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\ImageProcessingLabs\\Image Enhancement\\images\\2ox.jpg");
 		try {
@@ -164,6 +181,7 @@ public class Enhance {
 		} catch (IOException e) {
 			System.out.println("Error : "+e);
 		}
+		display(image);
 	}
 
 }
