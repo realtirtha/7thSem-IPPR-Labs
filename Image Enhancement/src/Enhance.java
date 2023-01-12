@@ -58,28 +58,29 @@ public class Enhance {
 	
 	
 	//----------------------------------------------------
-	static int[][] twoDimension(int[][] f,double[] m)
+	static int[][] twoDimension(int[][] arr,double[] his)
 	{
 		int z=0;
-		for(int x=0;x<f.length;x++)
+		for(int x=0;x<arr.length;x++)
 		{
-			for(int y=0;y<f[0].length;y++)
+			for(int y=0;y<arr[0].length;y++)
 			{
 				
-			    z=f[x][y];
-				f[x][y]=(int) m[z];
+			    z=arr[x][y];
+				arr[x][y]=(int) his[z];
 			}
 		}
-		return f;
+		return arr;
 	}
 	
 	static double[] equalize(double[] prob) {
 		double[] s = new double[256];
 		for(int i=0;i<256;i++)
 		{
+			s[i]=0;
 			for(int j=0;j<=i;j++)
 			{
-				s[i]=0;
+				
 				s[i]+=prob[j];
 			}
 			s[i]=s[i]*255;
@@ -87,13 +88,13 @@ public class Enhance {
 		return s;
 	}
 	
-	static double[] probability(int[] arr,int imgSize)
+	static double[] probability(int[] count,int imgSize)
 	{
 		double[] prob = new double[256];
 		
 		for(int i=0;i<256;i++)
-		{
-			prob [i]=(double) arr[i]/imgSize;
+		{ 
+			prob [i]=(double) count[i]/imgSize;
 		}
 		return prob;	
 	}
@@ -101,18 +102,20 @@ public class Enhance {
 	public static int[] oCount(int[][] arr) {
 		int[] c = new int[256];
 		
-		for(int x=0;x<256;x++) {
+
 			for(int y=0; y<arr.length;y++) {
 				for(int z=0; z<arr[0].length; z++) {
-					if(x==arr[y][z]) {
-						c[x]++;
-					}
+					c[arr[y][z]]++;
 				}
 			}
-		}
+		
 		
 		return c;
 	}
+	
+	
+	
+	
 	
 	public static int[][] logTransform(int [][] arr){
 		int ar[][] = new int[arr.length][arr[0].length];
@@ -129,16 +132,16 @@ public class Enhance {
 		for (int x=0;x<arr.length;x++)
 			for (int y=0;y<arr[0].length;y++) {
 				
-				int pixelValue = arr[x][y];
+				//int pixelValue = arr[x][y];
 				
 				// Make sure that the pixel value is within the range 0-255
-				pixelValue = Math.max(0, pixelValue);
-				pixelValue = Math.min(255, pixelValue);
+				//pixelValue = Math.max(0, pixelValue);
+				//pixelValue = Math.min(255, pixelValue);
 				
 				//idk how it worked
-				Color c = new Color(pixelValue, pixelValue, pixelValue);
+				//Color c = new Color(pixelValue, pixelValue, pixelValue);
 				
-				//Color c = new Color(arr[x][y],arr[x][y],arr[x][y]);
+				Color c = new Color(arr[x][y],arr[x][y],arr[x][y]);
 				
 				img.setRGB(x, y, c.getRGB());
 			}
