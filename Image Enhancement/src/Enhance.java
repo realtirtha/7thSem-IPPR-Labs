@@ -16,7 +16,7 @@ public class Enhance {
 		
 		//reading image
 		try {
-			File input = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\ImageProcessingLabs\\Image Enhancement\\images\\ox.jpg");
+			File input = new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\ImageProcessingLabs\\Image Enhancement\\images\\tt.jpg");
 			image = ImageIO.read(input);
 			System.out.println("Readin' complete");
 		}
@@ -30,7 +30,7 @@ public class Enhance {
 		
 		
 		//question number 1
-		//int [][] logTrans = logTransform(inArray);
+		//int [][] logTrans = logTransform(inArray, 1);
 		
 		//according to question 2 
 		int[] occurance = oCount(inArray); //occ counting
@@ -117,14 +117,23 @@ public class Enhance {
 	
 	
 	
-	public static int[][] logTransform(int [][] arr){
+	public static int[][] logTransform(int [][] arr, double c){
 		int ar[][] = new int[arr.length][arr[0].length];
-		
-		for(int x=0;x<arr.length;x++)
-			for (int y=0;y<arr[0].length;y++) {
-				ar[x][y]= (int) Math.log(arr[x][y]);
-			}
-		return ar;
+	    int min = Integer.MAX_VALUE;
+	    int max = Integer.MIN_VALUE;
+
+	    for(int x=0;x<arr.length;x++)
+	        for (int y=0;y<arr[0].length;y++) {
+	            double logPixel = c * Math.log10(arr[x][y] + 1);
+	            ar[x][y] = (int) logPixel;
+	            min = Math.min(min, ar[x][y]);
+	            max = Math.max(max, ar[x][y]);
+	        }
+	    for(int x=0;x<arr.length;x++)
+	        for (int y=0;y<arr[0].length;y++) {
+	            ar[x][y] = (ar[x][y] - min) * 255 / (max - min);
+	        }
+	    return ar;
 	}
 	
 	public static BufferedImage convertToBI(int[][] arr) {
@@ -132,16 +141,16 @@ public class Enhance {
 		for (int x=0;x<arr.length;x++)
 			for (int y=0;y<arr[0].length;y++) {
 				
-				//int pixelValue = arr[x][y];
+				int pixelValue = arr[x][y];
 				
 				// Make sure that the pixel value is within the range 0-255
-				//pixelValue = Math.max(0, pixelValue);
-				//pixelValue = Math.min(255, pixelValue);
+				pixelValue = Math.max(0, pixelValue);
+				pixelValue = Math.min(255, pixelValue);
 				
 				//idk how it worked
-				//Color c = new Color(pixelValue, pixelValue, pixelValue);
+				Color c = new Color(pixelValue, pixelValue, pixelValue);
 				
-				Color c = new Color(arr[x][y],arr[x][y],arr[x][y]);
+				//Color c = new Color(arr[x][y],arr[x][y],arr[x][y]);
 				
 				img.setRGB(x, y, c.getRGB());
 			}
@@ -158,7 +167,10 @@ public class Enhance {
 				int green = c.getGreen();
 				int blue = c.getBlue();
 				
-				arr[x][y]= (red+green+blue)/3;
+				
+				//for log
+				arr[x][y] = (int) (0.21 * red + 0.72 * green + 0.07 * blue);
+				//arr[x][y]= (red+green+blue)/3;
 			}
 		return arr;
 	}
@@ -177,7 +189,7 @@ public class Enhance {
 		}
 	
 	public static void write(BufferedImage image) {
-		File output= new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\ImageProcessingLabs\\Image Enhancement\\images\\2ox.jpg");
+		File output= new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\ImageProcessingLabs\\Image Enhancement\\images\\2tt.jpg");
 		try {
 			ImageIO.write(image,"jpg", output);
 			System.out.println("writin' complete.");
