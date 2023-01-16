@@ -31,25 +31,21 @@ public class Enhance {
 		
 		//question number 1
 		//int [][] logTrans = logTransform(inArray, 1);
+		//BufferedImage inBuffer = convertToBI(logTrans);
+		//write(inBuffer);
+		
 		
 		//according to question 2 
-		int[] occurance = oCount(inArray); //occ counting
-		
-		int imgSize=inArray.length*inArray[0].length;
-		double[] prob = probability(occurance, imgSize);
-		
-		double[] histogram = equalize(prob);
-		
-		//1D array to 2D array
-		int[][] two = twoDimension(inArray, histogram);
+		//int[] occurance = oCount(inArray); //occ counting	
+		//int imgSize=inArray.length*inArray[0].length;
+		//double[] prob = probability(occurance, imgSize);	
+		//double[] histogram = equalize(prob);
+		//int[][] two = twoDimension(inArray, histogram); //1D array to 2D array	
+		//BufferedImage inBuffer = convertToBI(two); //converting array into Buffered form	
+		//write(inBuffer); //function call to write image
 		
 		
-		//converting array into Buffered form
-		//BufferedImage inBuffer = convertToBI(logTrans);
-		BufferedImage inBuffer = convertToBI(two);
-		
-		//function call to write image
-		write(inBuffer);
+		//time for question no. 3
 	}
 	
 	
