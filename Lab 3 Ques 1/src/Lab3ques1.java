@@ -17,8 +17,8 @@ public class Lab3ques1
 		BufferedImage image,image1,image2;
 		try
 		{
-			image1=ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\Lab 3 Ques 1\\ImageProcessingLabs\\Lab 3 Ques 1\\images\\ronaldo_de_lima_N.jpg"));
-			image2=ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\Lab 3 Ques 1\\ImageProcessingLabs\\Lab 3 Ques 1\\images\\ronaldo_N.jpg"));
+			image1=ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\ImageProcessingLabs\\Lab 3 Ques 1\\images\\ronaldo_de_lima_N.jpg"));
+			image2=ImageIO.read(new File("C:\\Tirtha Kshitz\\7th Sem\\IPPR\\ImageProcessingLabs\\Lab 3 Ques 1\\images\\ronaldo_N.jpg"));
 
 			System.out.println("Reading Complete.");
 			
